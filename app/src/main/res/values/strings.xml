@@ -1,6 +1,14 @@
 <resources>
-    <string name="app_name">RzucPaleniem</string>
-    <string name="title_home">Strona Główna</string>
-    <string name="title_dashboard">Panel</string>
-    <string name="title_notifications">Powiadomienia</string>
+    <string name="app_name">Rzuc Palenie(m)</string>
+<!--    <string name="title_home">Strona Główna</string>-->
+    <string name="title_stats">Statystyka</string>
+    <string name="title_title_screen">Witaj w aplikacji</string>
+    <string name="title_settings">Ustawienia</string>
+    <string name="label_title_screen">Strona główna</string>
+    <string name="stat_screen_placeholder">Wybierz sposób prezentacji danych poniżej</string>
+    <string-array name="day_week_month">
+        <item>Dzienny</item>
+        <item>Tygodniowy</item>
+        <item>Miesięczny</item>
+    </string-array>
 </resources>

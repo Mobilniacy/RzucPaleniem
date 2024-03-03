@@ -1,13 +1,13 @@
-package com.example.rzucpaleniem.ui.home
+package com.example.rzucpaleniem.ui.stats
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class StatsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "To fragment statystyk"
     }
     val text: LiveData<String> = _text
 }

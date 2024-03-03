@@ -1,13 +1,13 @@
-package com.example.rzucpaleniem.ui.dashboard
+package com.example.rzucpaleniem.ui.title_screen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class TitleScreenViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "To fragment ekranu tytułowego"
     }
     val text: LiveData<String> = _text
 }
