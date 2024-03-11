@@ -5,7 +5,10 @@
     <string name="title_title_screen">Witaj w aplikacji</string>
     <string name="title_settings">Ustawienia</string>
     <string name="label_title_screen">Strona główna</string>
+    <string name="login_welcoming_text">Witaj "@uname"</string>
+    <string name="title_login_screen">Zaloguj sie do aplikacji</string>
     <string name="stat_screen_placeholder">Wybierz sposób prezentacji danych poniżej</string>
+    <string name="startFragmentID">Placeholder</string>
     <string-array name="day_week_month">
         <item>Dzienny</item>
         <item>Tygodniowy</item>

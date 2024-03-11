@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_title_screen">
+    app:startDestination="@+id/navigation_login">
 
     <fragment
         android:id="@+id/navigation_stats"
@@ -22,4 +22,16 @@
         android:name="com.example.rzucpaleniem.ui.settings.NotificationsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.example.rzucpaleniem.ui.login_screen.LoginScreenFragment"
+        android:label="@string/title_login_screen"
+        tools:layout="@layout/fragment_login_screen" />
+
+    <action
+        android:id="@+id/action_registerScreen_to_titleScreen"
+        app:destination="@id/navigation_title_screen"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
 </navigation>

@@ -1,13 +1,17 @@
 package com.example.rzucpaleniem.ui.title_screen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.rzucpaleniem.R
 import com.example.rzucpaleniem.databinding.FragmentTitleScreenBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class TitleScreenFragment : Fragment() {
 
@@ -33,6 +37,17 @@ class TitleScreenFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        // Pokazanie dolnego van bar, ponieważ jest ukrywany przez login/register
+        val navView = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+        navView?.visibility = View.VISIBLE
+
+        // Dla paska narzędzi (Toolbar)
+        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
+        actionBar?.show()
     }
 
     override fun onDestroyView() {
