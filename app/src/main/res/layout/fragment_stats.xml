@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg_title"
     tools:context=".ui.stats.StatsFragment">
 
     <TextView
@@ -13,39 +14,77 @@
         android:text="@string/stat_screen_placeholder"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/lista_rozwijana"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:visibility="visible"
+    <View
+        android:id="@+id/backgroundStatsBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:background="#DF000000"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundStatsTop"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundStatsTop"
+        app:layout_constraintStart_toStartOf="@+id/backgroundStatsTop"
+        app:layout_constraintTop_toTopOf="@+id/backgroundStatsTop" />
+
+    <View
+        android:id="@+id/backgroundStatsTop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="64dp"
+        android:background="#F6F6F6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/lista_rozwijana"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="12dp"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundStatsTop"
+        app:layout_constraintStart_toStartOf="@+id/backgroundStatsTop"
+        app:layout_constraintTop_toTopOf="@+id/backgroundStatsTop"
         tools:visibility="visible" />
 
     <Button
         android:id="@+id/buttonPrevious"
         android:layout_width="128dp"
         android:layout_height="64dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="12dp"
         android:text="nd.\n03.03.2024"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundStatsTop"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundStatsTop"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/backgroundStatsTop" />
 
     <Button
         android:id="@+id/buttonNext"
         android:layout_width="128dp"
         android:layout_height="64dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
         android:text="wt.\n05.03.2024"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundStatsTop"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundStatsTop"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/backgroundStatsTop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

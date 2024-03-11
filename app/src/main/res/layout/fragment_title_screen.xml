@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg_title"
     tools:context=".ui.title_screen.TitleScreenFragment">
 
     <TextView
@@ -12,7 +13,50 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewTitleKonfiguracjaBottom"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/viewTitleKonfiguracjaTop"
+        app:layout_constraintEnd_toEndOf="@+id/viewTitleKonfiguracjaTop"
+        app:layout_constraintStart_toStartOf="@+id/viewTitleKonfiguracjaTop"
+        app:layout_constraintTop_toTopOf="@+id/viewTitleKonfiguracjaTop" />
+
+    <View
+        android:id="@+id/viewTitleKonfiguracjaTop"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:background="#F6F6F6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Witaj! Skonfigurujmy wszystko poniżej"
+        app:layout_constraintBottom_toBottomOf="@+id/viewTitleKonfiguracjaTop"
+        app:layout_constraintEnd_toEndOf="@+id/viewTitleKonfiguracjaTop"
+        app:layout_constraintStart_toStartOf="@+id/viewTitleKonfiguracjaTop"
+        app:layout_constraintTop_toTopOf="@+id/viewTitleKonfiguracjaTop" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

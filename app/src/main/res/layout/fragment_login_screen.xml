@@ -16,10 +16,10 @@
 
     <ImageView
         android:id="@+id/circle_image"
-        android:layout_width="800dp"
-        android:layout_height="800dp"
+        android:layout_width="900dp"
+        android:layout_height="900dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="-300dp"
+        android:layout_marginStart="-400dp"
         android:alpha="0.1"
         android:src="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +75,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundTop"
         app:layout_constraintEnd_toEndOf="@+id/backgroundTop"
         app:layout_constraintStart_toStartOf="@+id/backgroundTop"
@@ -244,9 +244,19 @@
         android:id="@+id/textViewCredits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:text="Created by Mobilniacy(c)"
+        android:text="© 2024 Mobilniacy"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mobilniacyappicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
