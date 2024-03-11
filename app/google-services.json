@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1032509830584",
+    "project_id": "rzucpaleniemdatabase",
+    "storage_bucket": "rzucpaleniemdatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032509830584:android:bf9e74e7e1bef20c9c8b4d",
+        "android_client_info": {
+          "package_name": "com.example.rzucpaleniem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhsFKEMckWtIiw46QSE-0nkpdZU4FjJY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

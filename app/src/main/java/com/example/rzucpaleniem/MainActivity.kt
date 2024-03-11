@@ -16,10 +16,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.view.View
 import androidx.core.content.edit
+import com.google.firebase.analytics.FirebaseAnalytics //firebase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var firebaseAnalytics: FirebaseAnalytics //firebase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        
 
 //  ***Jak bedzie firebase
 //        // Sprawdzenie, czy użytkownik jest zalogowany
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 //        } else {
 //            R.id.navigation_title_screen // Fragment logowania
 //        }
-
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this) //firebase
 
         val navView: BottomNavigationView = binding.navView
 
@@ -58,6 +61,16 @@ class MainActivity : AppCompatActivity() {
 //         V Włączony actionBar u góry ekranu, aby wyłączyć odkomentować importa i linijke poniżej
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        // Log a custom event
+        val bundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.ITEM_NAME, "example_item")
+        }
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle)
+
+        // Set a user property
+        firebaseAnalytics.setUserProperty("favorite_screen", "stats_screen")
     }
 
     fun showBars(){
