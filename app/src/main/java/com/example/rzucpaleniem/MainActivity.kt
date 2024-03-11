@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
+
 
 //  ***Jak bedzie firebase
 //        // Sprawdzenie, czy użytkownik jest zalogowany
