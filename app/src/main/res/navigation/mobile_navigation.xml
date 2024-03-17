@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.example.rzucpaleniem.ui.login_screen.LoginScreenFragment"
+        android:name="com.example.rzucpaleniem.ui.auth_screen.RegisterScreenFragment"
         android:label="@string/title_login_screen"
-        tools:layout="@layout/fragment_login_screen" />
+        tools:layout="@layout/fragment_register_screen" />
 
     <action
         android:id="@+id/action_registerScreen_to_titleScreen"

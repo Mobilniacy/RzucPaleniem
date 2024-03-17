@@ -14,4 +14,6 @@
         <item>Tygodniowy</item>
         <item>Miesięczny</item>
     </string-array>
+
+    <string name="login_screen_top_text">Witaj\nZaloguj się do aplikacji!</string>
 </resources>

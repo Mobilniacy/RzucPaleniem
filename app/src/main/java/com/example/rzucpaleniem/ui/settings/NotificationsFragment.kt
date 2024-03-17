@@ -28,6 +28,7 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // PO CO TO JEST?
         val textView: TextView = binding.textSettings
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it

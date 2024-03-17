@@ -1,4 +1,4 @@
-package com.example.rzucpaleniem.ui.login_screen
+package com.example.rzucpaleniem.ui.auth_screen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

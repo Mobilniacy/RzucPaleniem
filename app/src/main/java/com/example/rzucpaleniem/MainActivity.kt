@@ -33,8 +33,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*TODO: Ustawić start destination na LoadingScreen w mobile_navigation i updatować go
+           w miare przebieguinicjalizacji wszystkich elementów. Myślę że to dobry pomysł.
+           Ewentualnie symulacja we fragmencie ładowania :)*/
 
-//  ***Jak bedzie firebase
+        //TODO: Jak będzie firebase to użyć authHelpera, może się na coś zda.
 //        // Sprawdzenie, czy użytkownik jest zalogowany
 //        val isUserLoggedIn = authHelper.isUserLoggedIn()
 //        val isUserLoggedIn = true
