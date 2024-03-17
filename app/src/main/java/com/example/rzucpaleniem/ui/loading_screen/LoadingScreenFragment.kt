@@ -50,7 +50,10 @@ class LoadingScreenFragment : Fragment() {
         actionBar?.hide()
     }
 
-    /*TODO: Zaimplementować postęp paska ładowania. Sprzężyć go z aktualnym rozmiarem okna
+    /*TODO: 1. Zaimplementować postęp paska ładowania. Sprzężyć go z aktualnym rozmiarem okna
     *  i szarym paskiem danym jako tło, żeby było ładnie i płynnie. */
+
+    /*TODO: 2. Po załadowaniu przenieść użytkownika do aplikacji jeżeli był zalogowany, dane się zgadzają, a jego sesja nie wygasła.
+    *  W przeciwnym razie wyświetlić ekran wyboru - logowanie/rejestracja */
 
 }

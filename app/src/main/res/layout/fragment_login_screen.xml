@@ -36,11 +36,9 @@
     <View
         android:id="@+id/backgroundTop"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="512dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="192dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="192dp"
         android:background="#F0FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +79,7 @@
         android:orientation="vertical">
     <!-- Uname -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextFieldUname"
+            android:id="@+id/outlinedTextFieldUnameLogin"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +112,7 @@
             android:textAlignment="center" />
         <!-- Potwierdzenie Hasła -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextFieldPassword2"
+            android:id="@+id/outlinedTextFieldPasswordLogin"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

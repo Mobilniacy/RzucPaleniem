@@ -7,6 +7,7 @@
     <string name="label_title_screen">Strona główna</string>
     <string name="login_welcoming_text">Witaj "@uname"</string>
     <string name="title_login_screen">Zaloguj sie do aplikacji</string>
+    <string name="title_register_screen">Zarejestruj sie do aplikacji</string>
     <string name="stat_screen_placeholder">Wybierz sposób prezentacji danych poniżej</string>
     <string name="startFragmentID">Placeholder</string>
     <string-array name="day_week_month">
@@ -15,5 +16,6 @@
         <item>Miesięczny</item>
     </string-array>
 
-    <string name="login_screen_top_text">Witaj\nZaloguj się do aplikacji!</string>
+    <string name="login_screen_top_text">Logowanie</string>
+    <string name="register_screen_top_text">Rejestracja</string>
 </resources>

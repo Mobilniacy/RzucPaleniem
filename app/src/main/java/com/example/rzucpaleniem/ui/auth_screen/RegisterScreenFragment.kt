@@ -23,12 +23,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 //import com.example.rzucpaleniem.AuthHelper
+import apacheFileHelper
 
 class RegisterScreenFragment : Fragment() {
 
     private var _binding: FragmentRegisterScreenBinding? = null
 
-
+    //test
+    lateinit var aph : apacheFileHelper
+    //test
 
     private val binding get() = _binding!!
 
@@ -40,10 +43,14 @@ class RegisterScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val registerScreenViewModel =
-            ViewModelProvider(this).get(RegisterScreenViewModel::class.java)
+            ViewModelProvider(this)[RegisterScreenViewModel::class.java]
 
         _binding = FragmentRegisterScreenBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        //test
+        aph = apacheFileHelper()
+        //test
 
         // PO CO TO JEST?
         val textView: TextView = binding.textView2
@@ -108,13 +115,14 @@ class RegisterScreenFragment : Fragment() {
         val confirmTextView = view.findViewById<TextView>(R.id.textViewConfirm)
         confirmTextView?.setOnClickListener() {
 
+
             /*TODO: ogarnąć sprawdzanie warunków dla każdego pola rejestracji i w razie braku lub nieprawidłowości zaznaczyć odpowienie pole
             *  /ustawić fokus na dany element który się nie zgadza oraz wyświetlić komunikat w formie Toast.makeText albo na stałe w okienku pod
             *  nieprawidłowym czymś VVV*/
 
             //Jeżeli wszystkie warunki spełnione i porozumienie z Firebase zostało ustanowione i potwierdzone
             //Przenieść użytkownika do aplikacji
-            requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_registerScreen_to_titleScreen)
+            requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_authScreen_to_titleScreen)
             Toast.makeText(context, "Text kliknięty", Toast.LENGTH_LONG).show()
         }
 
@@ -138,6 +146,8 @@ class RegisterScreenFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 
 }

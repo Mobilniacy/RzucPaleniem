@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_login">
+    app:startDestination="@+id/navigation_selection">
 
     <fragment
         android:id="@+id/navigation_stats"
@@ -25,13 +25,46 @@
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.example.rzucpaleniem.ui.auth_screen.RegisterScreenFragment"
+        android:name="com.example.rzucpaleniem.ui.auth_screen.LoginScreenFragment"
         android:label="@string/title_login_screen"
+        tools:layout="@layout/fragment_login_screen" />
+
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="com.example.rzucpaleniem.ui.auth_screen.RegisterScreenFragment"
+        android:label="@string/title_register_screen"
         tools:layout="@layout/fragment_register_screen" />
 
+    <fragment
+        android:id="@+id/navigation_loading"
+        android:name="com.example.rzucpaleniem.ui.loading_screen.LoadingScreenFragment"
+        android:label="@string/title_login_screen"
+        tools:layout="@layout/fragment_loading_screen" />
+
+    <fragment
+        android:id="@+id/navigation_selection"
+        android:name="com.example.rzucpaleniem.ui.loading_screen.SelectionScreenFragment"
+        android:label="Wybierz metode dostępu do aplikacji"
+        tools:layout="@layout/fragment_selection_screen" />
+
     <action
-        android:id="@+id/action_registerScreen_to_titleScreen"
+        android:id="@+id/action_authScreen_to_titleScreen"
         app:destination="@id/navigation_title_screen"
         app:popUpTo="@id/mobile_navigation"
         app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_selectionScreen_to_loginScreen"
+        app:destination="@id/navigation_login" />
+
+    <action
+        android:id="@+id/action_selectionScreen_to_registerScreen"
+        app:destination="@id/navigation_register" />
+
+    <action
+        android:id="@+id/action_logout"
+        app:destination="@id/navigation_loading"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+
 </navigation>

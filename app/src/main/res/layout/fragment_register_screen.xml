@@ -110,7 +110,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <!-- Uname -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextFieldUname"
+                android:id="@+id/outlinedTextFieldUnameLogin"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <!-- Potwierdzenie Hasła -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextFieldPassword2"
+                android:id="@+id/outlinedTextFieldPasswordLogin"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
