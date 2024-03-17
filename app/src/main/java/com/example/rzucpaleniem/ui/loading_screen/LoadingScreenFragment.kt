@@ -50,6 +50,7 @@ class LoadingScreenFragment : Fragment() {
         actionBar?.hide()
     }
 
-    //TODO: Zaimplementować wczytywanie danych
+    /*TODO: Zaimplementować postęp paska ładowania. Sprzężyć go z aktualnym rozmiarem okna
+    *  i szarym paskiem danym jako tło, żeby było ładnie i płynnie. */
 
 }
