@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewRegisterTopInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -70,7 +70,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/backgroundTop"
         app:layout_constraintEnd_toEndOf="@+id/backgroundTop"
         app:layout_constraintStart_toStartOf="@+id/backgroundTop"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTopInfo">
 
     <LinearLayout
         android:layout_width="match_parent"

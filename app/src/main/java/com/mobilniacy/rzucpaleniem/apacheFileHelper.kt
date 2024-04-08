@@ -1,7 +1,7 @@
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
-import com.example.rzucpaleniem.R
+import com.mobilniacy.rzucpaleniem.R
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import org.apache.commons.csv.CSVPrinter
@@ -44,13 +44,13 @@ class apacheFileHelper {
         return 0
     }
 
-    fun addEntryToCSV(context: Context, username: String, password: String, email: String) {
+    fun addEntryToCSV(context: Context, username: String, password: String, email: String, bdate: String) {
         val file = FileWriter("raw/users.csv", true) // Ścieżka do Twojego pliku CSV
         val bufferedWriter = BufferedWriter(file)
         val csvPrinter = CSVPrinter(bufferedWriter, CSVFormat.DEFAULT)
 
         // Dodaj nowy wpis do pliku CSV
-        csvPrinter.printRecord(username, password, email)
+        csvPrinter.printRecord(username, password, email, bdate)
 
         // Zamykanie strumieni
         csvPrinter.close()

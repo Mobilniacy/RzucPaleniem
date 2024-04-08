@@ -1,4 +1,4 @@
-package com.example.rzucpaleniem
+package com.mobilniacy.rzucpaleniem
 
 import org.junit.Test
 

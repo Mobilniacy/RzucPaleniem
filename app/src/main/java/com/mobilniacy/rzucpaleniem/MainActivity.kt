@@ -1,5 +1,6 @@
-package com.example.rzucpaleniem
+package com.mobilniacy.rzucpaleniem
 
+import android.content.Context
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -7,25 +8,34 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.rzucpaleniem.databinding.ActivityMainBinding
+import com.mobilniacy.rzucpaleniem.databinding.ActivityMainBinding
 
 // ***Jak bedzie firebase
 //import com.example.rzucpaleniem.AuthHelper
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.view.View
-import androidx.core.content.edit
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics //firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var firebaseAnalytics: FirebaseAnalytics //firebase
+//    private lateinit var firebaseAnalytics: FirebaseAnalytics //firebase analityka? nie działa
+
+    lateinit var auth: FirebaseAuth //firebase autoryzacja
+
+    lateinit var initialFragmentId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        FirebaseApp.initializeApp(this)
+
 
         //***Jak bedzie firebase
         //var authHelper: AuthHelper
@@ -38,17 +48,8 @@ class MainActivity : AppCompatActivity() {
            Ewentualnie symulacja we fragmencie ładowania :)*/
 
         //TODO: Jak będzie firebase to użyć authHelpera, może się na coś zda.
-//        // Sprawdzenie, czy użytkownik jest zalogowany
-//        val isUserLoggedIn = authHelper.isUserLoggedIn()
-//        val isUserLoggedIn = true
-//
-//        // Wybór fragmentu na podstawie stanu zalogowania użytkownika
-//        val initialFragmentId = if (isUserLoggedIn) {
-//            R.id.navigation_login // Fragment po zalogowaniu
-//        } else {
-//            R.id.navigation_title_screen // Fragment logowania
-//        }
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this) //firebase
+        // Sprawdzenie, czy użytkownik jest zalogowany
+
 
         val navView: BottomNavigationView = binding.navView
 
@@ -67,14 +68,33 @@ class MainActivity : AppCompatActivity() {
 
 
         // Log a custom event
-        val bundle = Bundle().apply {
-            putString(FirebaseAnalytics.Param.ITEM_NAME, "example_item")
-        }
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle)
-
-        // Set a user property
-        firebaseAnalytics.setUserProperty("favorite_screen", "stats_screen")
+//        val bundle = Bundle().apply {
+//            putString(FirebaseAnalytics.Param.ITEM_NAME, "example_item")
+//        }
+//        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle)
+//
+//        // Set a user property
+//        firebaseAnalytics.setUserProperty("favorite_screen", "stats_screen")
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        //Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+    }
+
+//    public override fun onStart() {
+//        super.onStart()
+//        // Sprawdzamy czy user jest zalogowany i ustawiamy odpowiednie okienko dla menu nawigacji.
+//        val currentUser = auth.currentUser
+//        if (currentUser != null) {
+//            val initialFragmentId = R.id.navigation_title_screen
+//        } else {
+//            val initialFragmentId = R.id.navigation_login
+//        }
+//    }
+
 
     fun showBars(){
         // Pokazanie dolnego van bar

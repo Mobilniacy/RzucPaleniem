@@ -1,4 +1,4 @@
-package com.example.rzucpaleniem.ui.settings
+package com.mobilniacy.rzucpaleniem.ui.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

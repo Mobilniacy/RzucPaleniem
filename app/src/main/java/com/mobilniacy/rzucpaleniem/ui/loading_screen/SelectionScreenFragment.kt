@@ -1,4 +1,4 @@
-package com.example.rzucpaleniem.ui.loading_screen
+package com.mobilniacy.rzucpaleniem.ui.loading_screen
 
 import android.content.Context
 import android.os.Bundle
@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.rzucpaleniem.R
-import com.example.rzucpaleniem.databinding.FragmentSelectionScreenBinding
+import com.mobilniacy.rzucpaleniem.R
+import com.mobilniacy.rzucpaleniem.databinding.FragmentSelectionScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -26,17 +25,17 @@ class SelectionScreenFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val selectionScreenViewModel =
-            ViewModelProvider(this)[SelectionScreenViewModel::class.java]
+//        val selectionScreenViewModel =
+//            ViewModelProvider(this)[SelectionScreenViewModel::class.java]
 
         _binding = FragmentSelectionScreenBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // PO CO TO JEST?
-        val textView: TextView = binding.textViewSelectionTopText
-        selectionScreenViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        // PO CO TO JEST?
+//        val textView: TextView = binding.textViewSelectionTopText
+//        selectionScreenViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 

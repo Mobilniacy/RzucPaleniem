@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1032509830584",
-    "project_id": "rzucpaleniemdatabase",
-    "storage_bucket": "rzucpaleniemdatabase.appspot.com"
+    "project_number": "614406612175",
+    "project_id": "rzucpaleniem",
+    "storage_bucket": "rzucpaleniem.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1032509830584:android:bf9e74e7e1bef20c9c8b4d",
+        "mobilesdk_app_id": "1:614406612175:android:0e7d773cb7ed516f7683ba",
         "android_client_info": {
-          "package_name": "com.example.rzucpaleniem"
+          "package_name": "com.mobilniacy.rzucpaleniem"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBhsFKEMckWtIiw46QSE-0nkpdZU4FjJY0"
+          "current_key": "AIzaSyABjjsyJfqgpaC4-zDTPZ3d_ZmcicFW53U"
         }
       ],
       "services": {

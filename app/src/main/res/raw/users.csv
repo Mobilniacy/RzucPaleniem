@@ -1,4 +1,4 @@
-username,password,email
-user1,password123,user1@example.com
-user2,abc123,user2@example.com
-user3,pass456,user3@example.com
+username,password,email, bdate
+user1,password123,user1@example.com, 19.02.2023
+user2,abc123,user2@example.com, 20.02.1999
+user3,pass456,user3@example.com, 20.10.1990

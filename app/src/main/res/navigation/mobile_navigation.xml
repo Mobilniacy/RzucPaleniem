@@ -3,53 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_selection">
+    app:startDestination="@+id/navigation_loading">
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="com.example.rzucpaleniem.ui.stats.StatsFragment"
+        android:name="com.mobilniacy.rzucpaleniem.ui.stats.StatsFragment"
         android:label="@string/title_stats"
         tools:layout="@layout/fragment_stats" />
 
     <fragment
         android:id="@+id/navigation_title_screen"
-        android:name="com.example.rzucpaleniem.ui.title_screen.TitleScreenFragment"
+        android:name="com.mobilniacy.rzucpaleniem.ui.title_screen.TitleScreenFragment"
         android:label="@string/title_title_screen"
         tools:layout="@layout/fragment_title_screen" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.example.rzucpaleniem.ui.settings.NotificationsFragment"
+        android:name="com.mobilniacy.rzucpaleniem.ui.settings.NotificationsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.example.rzucpaleniem.ui.auth_screen.LoginScreenFragment"
+        android:name="com.mobilniacy.rzucpaleniem.ui.auth_screen.LoginScreenFragment"
         android:label="@string/title_login_screen"
         tools:layout="@layout/fragment_login_screen" />
 
     <fragment
         android:id="@+id/navigation_register"
-        android:name="com.example.rzucpaleniem.ui.auth_screen.RegisterScreenFragment"
+        android:name="com.mobilniacy.rzucpaleniem.ui.auth_screen.RegisterScreenFragment"
         android:label="@string/title_register_screen"
         tools:layout="@layout/fragment_register_screen" />
 
     <fragment
         android:id="@+id/navigation_loading"
-        android:name="com.example.rzucpaleniem.ui.loading_screen.LoadingScreenFragment"
+        android:name="com.mobilniacy.rzucpaleniem.ui.loading_screen.LoadingScreenFragment"
         android:label="@string/title_login_screen"
         tools:layout="@layout/fragment_loading_screen" />
 
     <fragment
         android:id="@+id/navigation_selection"
-        android:name="com.example.rzucpaleniem.ui.loading_screen.SelectionScreenFragment"
+        android:name="com.mobilniacy.rzucpaleniem.ui.loading_screen.SelectionScreenFragment"
         android:label="Wybierz metode dostępu do aplikacji"
         tools:layout="@layout/fragment_selection_screen" />
 
     <action
         android:id="@+id/action_authScreen_to_titleScreen"
         app:destination="@id/navigation_title_screen"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_loadingScreen_to_titleScreen"
+        app:destination="@id/navigation_title_screen"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_registerScreen_to_titleScreen"
+        app:destination="@id/navigation_title_screen"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_registerScreen_to_authScreen"
+        app:destination="@id/navigation_selection"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_loadingScreen_to_authScreen"
+        app:destination="@id/navigation_selection"
         app:popUpTo="@id/mobile_navigation"
         app:popUpToInclusive="true" />
 

@@ -1,4 +1,4 @@
-package com.example.rzucpaleniem.ui.loading_screen
+package com.mobilniacy.rzucpaleniem.ui.loading_screen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.example.rzucpaleniem.ui.auth_screen
+package com.mobilniacy.rzucpaleniem.ui.auth_screen
 
 import android.content.ContentValues.TAG
 import android.content.Context
@@ -11,12 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.DialogFragmentNavigatorDestinationBuilder
 import apacheFileHelper
-import com.example.rzucpaleniem.R
-import com.example.rzucpaleniem.databinding.FragmentLoginScreenBinding
+import com.mobilniacy.rzucpaleniem.R
+import com.mobilniacy.rzucpaleniem.databinding.FragmentLoginScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputLayout
 
@@ -35,8 +33,8 @@ class LoginScreenFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val loginScreenViewModel =
-            ViewModelProvider(this)[RegisterScreenViewModel::class.java]
+//        val loginScreenViewModel =
+//            ViewModelProvider(this)[RegisterScreenViewModel::class.java]
 
         _binding = FragmentLoginScreenBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -45,10 +43,10 @@ class LoginScreenFragment : Fragment() {
         aph = apacheFileHelper()
 
         // PO CO TO JEST?
-        val textView: TextView = binding.textView6
-        loginScreenViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textView6
+//        loginScreenViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
@@ -107,7 +105,7 @@ class LoginScreenFragment : Fragment() {
             return false
         } else {
             if(verbose){
-            Toast.makeText(context, "Pole login puste", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Pole login puste", Toast.LENGTH_LONG).show()
             }
             return true
         }

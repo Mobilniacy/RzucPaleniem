@@ -1,4 +1,4 @@
-package com.example.rzucpaleniem.ui.title_screen
+package com.mobilniacy.rzucpaleniem.ui.title_screen
 
 import android.content.Context
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.rzucpaleniem.R
-import com.example.rzucpaleniem.databinding.FragmentTitleScreenBinding
+import com.mobilniacy.rzucpaleniem.R
+import com.mobilniacy.rzucpaleniem.databinding.FragmentTitleScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class TitleScreenFragment : Fragment() {
