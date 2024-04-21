@@ -19,6 +19,8 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics //firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth //firebase autoryzacja
 
     lateinit var initialFragmentId: String
+
+    lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +86,7 @@ class MainActivity : AppCompatActivity() {
 
         //Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
+        db = Firebase.firestore
     }
 
 //    public override fun onStart() {

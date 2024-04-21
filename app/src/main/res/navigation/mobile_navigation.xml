@@ -64,7 +64,17 @@
         app:popUpTo="@id/mobile_navigation"
         app:popUpToInclusive="true" />
     <action
+        android:id="@+id/action_loginScreen_to_titleScreen"
+        app:destination="@id/navigation_title_screen"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+    <action
         android:id="@+id/action_registerScreen_to_authScreen"
+        app:destination="@id/navigation_selection"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_loginScreen_to_authScreen"
         app:destination="@id/navigation_selection"
         app:popUpTo="@id/mobile_navigation"
         app:popUpToInclusive="true" />

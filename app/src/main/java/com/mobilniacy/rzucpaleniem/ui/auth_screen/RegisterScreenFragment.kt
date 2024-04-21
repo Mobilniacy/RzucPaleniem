@@ -33,10 +33,6 @@ class RegisterScreenFragment : Fragment() {
 
     private var _binding: FragmentRegisterScreenBinding? = null
 
-    //test
-    lateinit var aph : apacheFileHelper
-    //test
-
     private val binding get() = _binding!!
 
     lateinit var btnDatePicker: FloatingActionButton
@@ -59,10 +55,6 @@ class RegisterScreenFragment : Fragment() {
         _binding = FragmentRegisterScreenBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //test
-        // TODO: firebase
-        aph = apacheFileHelper()
-        //test
 
         // PO CO TO JEST?
 //        val textView: TextView = binding.textView2
@@ -119,7 +111,6 @@ class RegisterScreenFragment : Fragment() {
         outlinedTextBirthDay?.editText?.setOnClickListener {
             // Show date picker dialog when TextInputEditText is clicked
             btnDatePicker.performClick()
-//            Toast.makeText(context, "Klik klik", Toast.LENGTH_LONG).show()
         }
 
         // ClickListener dla przycisku confirm dla rejestracji
@@ -136,13 +127,6 @@ class RegisterScreenFragment : Fragment() {
 
             //NAZWA UŻYTKOWNIKA -
 
-
-            //Jeżeli wszystkie warunki spełnione i porozumienie z Firebase zostało ustanowione i potwierdzone
-            //Przenieść użytkownika do aplikacji
-
-
-//            requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_authScreen_to_titleScreen)
-//            Toast.makeText(context, "Text kliknięty", Toast.LENGTH_LONG).show()
         }
 
         //TODO: Dodać listenery dla przycisków dotyczących prywatności oraz TOS aby coś wyświetlały
@@ -189,7 +173,11 @@ class RegisterScreenFragment : Fragment() {
                         Log.d(TAG, "createUserWithEmail:success")
 //                        val user = (activity as MainActivity).auth.currentUser
 //                        updateUI(user)
-                        goToTitle()
+
+                        //DODAJ DO FIRESTORE WPISY
+                        sendToFirestore()
+
+//                        goToTitle()
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -215,6 +203,166 @@ class RegisterScreenFragment : Fragment() {
         }
 
 
+    }
+
+    fun createDataInFirestore(currentUserUID: String) {
+        // Referencja do bazy Firestore
+        val db = (activity as MainActivity).db
+
+
+        // Aktualna data
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+
+        // Aktualna data w formacie "dd-MM-yyyy"
+        val currentDate = dateFormat.format(Calendar.getInstance().time)
+
+        // Rozdzielenie daty na osobne zmienne - rok, miesiąc, dzień
+        val year = Calendar.getInstance().get(Calendar.YEAR)
+        val month = Calendar.getInstance().get(Calendar.MONTH) + 1 // Miesiące są indeksowane od 1
+        val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+
+        // Dane do zapisu
+        val productData1 = hashMapOf(
+            "MARLBORO GOLD" to hashMapOf(
+                "price" to 19.99
+            )
+        )
+        val productData3 = hashMapOf(
+            "CAMEL" to hashMapOf(
+                "price" to 14.99
+            )
+        )
+        val productData2 = hashMapOf(
+            "L&M LINK BLUE" to hashMapOf(
+                "price" to 15.99
+            )
+        )
+
+        // Dodanie danych do bazy Firestore
+        db.collection("users")
+            .document(currentUserUID)
+            .collection("products")
+            .document("MARLBORO GOLD")
+            .set(productData1)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Document successfully written!")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Firestore", "Error writing document", e)
+            }
+
+        // Dodanie daty do kolekcji "stats"
+        val statsData = hashMapOf(
+            "smoked" to 0
+        )
+
+        // Dodanie danych do bazy Firestore
+        db.collection("users")
+            .document(currentUserUID)
+            .collection("products")
+            .document("MARLBORO GOLD")
+            .collection("stats")
+            .document(year.toString())
+            .collection(month.toString())
+            .document(day.toString())
+            .set(statsData)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Document successfully written!")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Firestore", "Error writing document", e)
+            }
+        //2
+        // Dodanie danych do bazy Firestore
+        db.collection("users")
+            .document(currentUserUID)
+            .collection("products")
+            .document("L&M LINK BLUE")
+            .set(productData2)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Document successfully written!")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Firestore", "Error writing document", e)
+            }
+
+        // Dodanie danych do bazy Firestore
+        db.collection("users")
+            .document(currentUserUID)
+            .collection("products")
+            .document("L&M LINK BLUE")
+            .collection("stats")
+            .document(year.toString())
+            .collection(month.toString())
+            .document(day.toString())
+            .set(statsData)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Document successfully written!")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Firestore", "Error writing document", e)
+            }
+        //3
+        // Dodanie danych do bazy Firestore
+        db.collection("users")
+            .document(currentUserUID)
+            .collection("products")
+            .document("CAMEL")
+            .set(productData3)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Document successfully written!")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Firestore", "Error writing document", e)
+            }
+
+        // Dodanie danych do bazy Firestore
+        db.collection("users")
+            .document(currentUserUID)
+            .collection("products")
+            .document("CAMEL")
+            .collection("stats")
+            .document(year.toString())
+            .collection(month.toString())
+            .document(day.toString())
+            .set(statsData)
+            .addOnSuccessListener {
+                Log.d("Firestore", "Document successfully written!")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Firestore", "Error writing document", e)
+            }
+
+    }
+
+    private fun sendToFirestore(){
+        // Uzyskaj UID aktualnie zalogowanego użytkownika
+        val currentUserUID = (activity as MainActivity).auth.currentUser?.uid
+
+        // Sprawdź, czy UID jest niepuste
+        if (currentUserUID != null) {
+            createDataInFirestore(currentUserUID)
+            // Create a new user document with UID as document ID
+            val user = hashMapOf(
+                "login" to uname,
+                "email" to email,
+                "birthdate" to birthdate,
+            )
+
+            // Dodaj nowy dokument z wygenerowanym UID
+            (activity as MainActivity).db.collection("users")
+                .document(currentUserUID) // Użyj UID jako nazwy dokumentu
+                .set(user) // Ustaw dane użytkownika w dokumencie
+                .addOnSuccessListener {
+                    Log.d(TAG, "DocumentSnapshot added with ID: $currentUserUID")
+                    goToTitle()
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error adding document", e)
+                }
+        } else {
+            Log.e(TAG, "Current user UID is null")
+        }
     }
 
     private fun goToTitle(){
@@ -288,9 +436,11 @@ class RegisterScreenFragment : Fragment() {
     private fun emptyBirthDate(verbose: Boolean = true): Boolean {
         //Verbose - tryb gadatliwy - toast na ekranie dobre dla informowania, ale niedobre dla
         //sprawdzania w tle
-        if (view?.findViewById<TextInputLayout>(R.id.outlinedTextFieldRegisterBirthDate)?.editText?.text.toString()
-                .isNotEmpty()
+        val tekst = view?.findViewById<TextInputLayout>(R.id.outlinedTextFieldRegisterBirthDate)?.editText?.text.toString()
+
+        if (tekst.isNotEmpty()
         ) {
+            birthdate = tekst
             return false
         } else {
             if (verbose) {

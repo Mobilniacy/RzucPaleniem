@@ -7,6 +7,18 @@
     android:background="@drawable/gradient_bg_title"
     tools:context=".ui.title_screen.TitleScreenFragment">
 
+    <View
+        android:id="@+id/viewExpandBottom"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="18dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
     <TextView
         android:id="@+id/text_title_screen"
         android:layout_width="match_parent"
@@ -18,45 +30,102 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/viewTitleKonfiguracjaBottom"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="-7dp"
-        android:layout_marginBottom="-7dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/viewTitleKonfiguracjaTop"
-        app:layout_constraintEnd_toEndOf="@+id/viewTitleKonfiguracjaTop"
-        app:layout_constraintStart_toStartOf="@+id/viewTitleKonfiguracjaTop"
-        app:layout_constraintTop_toTopOf="@+id/viewTitleKonfiguracjaTop" />
-
-    <View
-        android:id="@+id/viewTitleKonfiguracjaTop"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
-        android:background="#F6F6F6"
+    <Button
+        android:id="@+id/buttonxd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="240dp"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="36dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/buttonxd"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Belka do rozwijania -->
+
+        <!-- Lista produktów (początkowo ukryta) -->
+
+        <TextView
+            android:id="@+id/expandTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:background="#F6F6F6"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="expandList"
+            android:padding="16dp"
+            android:text="Witaj! Rozwiń listę, aby wybrać produkt"
+            android:textAlignment="center" />
+
+        <ListView
+            android:id="@+id/productsListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/plus_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/black"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewExpandBottom" />
+
+
+    <EditText
+        android:id="@+id/licznik"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="end"
+        android:inputType="text"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/plus_button"
+        app:layout_constraintStart_toEndOf="@+id/plus_button"
+        app:layout_constraintTop_toTopOf="@+id/plus_button" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
+        android:id="@+id/textViewRandomMessage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Witaj! Skonfigurujmy wszystko poniżej"
-        app:layout_constraintBottom_toBottomOf="@+id/viewTitleKonfiguracjaTop"
-        app:layout_constraintEnd_toEndOf="@+id/viewTitleKonfiguracjaTop"
-        app:layout_constraintStart_toStartOf="@+id/viewTitleKonfiguracjaTop"
-        app:layout_constraintTop_toTopOf="@+id/viewTitleKonfiguracjaTop" />
+        android:textAlignment="center"
+        android:background="#f6f6f6f6"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

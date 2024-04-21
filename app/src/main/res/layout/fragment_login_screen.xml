@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewRegisterTopInfo"
+        android:id="@+id/textViewLoginTopInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -70,24 +70,24 @@
         app:layout_constraintBottom_toBottomOf="@+id/backgroundTop"
         app:layout_constraintEnd_toEndOf="@+id/backgroundTop"
         app:layout_constraintStart_toStartOf="@+id/backgroundTop"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTopInfo">
+        app:layout_constraintTop_toBottomOf="@+id/textViewLoginTopInfo">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:orientation="vertical">
-    <!-- Uname -->
+    <!-- Mail -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextFieldUnameLogin"
+            android:id="@+id/outlinedTextFieldMailLogin"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:hint="Nazwa użytkownika"
+            android:hint="E-Mail"
             android:imeOptions="actionNext"
-            android:maxLength="16"
+            android:maxLength="48"
             android:maxLines="1">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -96,7 +96,7 @@
                 android:gravity="center"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLength="16"
+                android:maxLength="48"
                 android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -108,7 +108,7 @@
             android:layout_marginBottom="12dp"
             android:background="@android:color/transparent"
             android:fontFamily="monospace"
-            android:text="Nie pamiętam loginu"
+            android:text="Nie pamiętam adresu E-Mail"
             android:textAlignment="center" />
         <!-- Potwierdzenie Hasła -->
         <com.google.android.material.textfield.TextInputLayout
@@ -120,7 +120,7 @@
             android:layout_marginBottom="5dp"
             android:hint="Hasło"
             android:imeOptions="actionDone"
-            android:maxLength="16"
+            android:maxLength="24"
             android:maxLines="1"
             app:endIconMode="password_toggle">
 
@@ -130,7 +130,7 @@
                 android:gravity="center"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:maxLength="16"
+                android:maxLength="24"
                 android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>

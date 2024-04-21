@@ -17,14 +17,12 @@ import com.mobilniacy.rzucpaleniem.R
 import com.mobilniacy.rzucpaleniem.databinding.FragmentLoginScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputLayout
+import com.mobilniacy.rzucpaleniem.MainActivity
 
 /* todo: Zaimplementować */
 
 class LoginScreenFragment : Fragment() {
     private var _binding: FragmentLoginScreenBinding? = null
-
-    //TODO: zamienić to na firebase
-    private lateinit var aph: apacheFileHelper  // Dla odczytu pliku csv - prymitywna metoda zastępcza dla firebase
 
     private val binding get() = _binding!!
 
@@ -39,8 +37,6 @@ class LoginScreenFragment : Fragment() {
         _binding = FragmentLoginScreenBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //Todo: zamienić to na firebase
-        aph = apacheFileHelper()
 
         // PO CO TO JEST?
 //        val textView: TextView = binding.textView6
@@ -70,14 +66,42 @@ class LoginScreenFragment : Fragment() {
         confirmTextView?.setOnClickListener() {
 
 
-            //Autentykacja logowania z plikiem csv
+            //Autentykacja logowania
 
-            if(!emptyUname() and !emptyPswd()){
-                val uname = view.findViewById<TextInputLayout>(R.id.outlinedTextFieldUnameLogin).editText?.text.toString()
-                val pswd = view.findViewById<TextInputLayout>(R.id.outlinedTextFieldPasswordLogin).editText?.text.toString()
-                if(checkDB(uname,pswd)){
-                    requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_authScreen_to_titleScreen)
-                }
+            val auth = (activity as MainActivity).auth
+            if(!emptyMail() and !emptyPswd()){
+                val password = view.findViewById<TextInputLayout>(R.id.outlinedTextFieldPasswordLogin).editText?.text.toString()
+                val email = view.findViewById<TextInputLayout>(R.id.outlinedTextFieldMailLogin).editText?.text.toString()
+//                if(checkDB(uname,pswd)){
+//                    requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_authScreen_to_titleScreen)
+//                }
+
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener((activity as MainActivity)) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success")
+                            val user = auth.currentUser
+                            goToTitle()
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                context,
+                                task.exception?.message ?: "Authentication failed.",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+
+                            Toast.makeText(
+                                context,
+                                "mail:"+email+" haslo:"+password,
+                                Toast.LENGTH_SHORT,
+                            ).show()
+
+                        }
+                    }
+
             }
 
 
@@ -95,17 +119,43 @@ class LoginScreenFragment : Fragment() {
         //TODO: Dodać listenery dla przycisków przypominania hasła/loginu
     }
 
+
+    private fun goToTitle(){
+        if (checkIfSignedIn()){
+            requireActivity().findNavController(R.id.nav_host_fragment_activity_main)
+                .navigate(R.id.action_loginScreen_to_titleScreen)
+        } else {
+            Toast.makeText(
+                context,
+                "Wystąpił problem z sesją, powrót do okna wyboru",
+                Toast.LENGTH_SHORT,
+            ).show()
+            requireActivity().findNavController(R.id.nav_host_fragment_activity_main)
+                .navigate(R.id.action_loginScreen_to_authScreen)
+        }
+    }
+
+    private fun checkIfSignedIn(): Boolean {
+        if ((activity as MainActivity).auth.currentUser != null) {
+            return true
+        }else{
+            return false
+        }
+    }
+
+
+
     //Funkcje pomocnicze dla logowania z csv
-    private fun emptyUname(verbose: Boolean = true): Boolean {
+    private fun emptyMail(verbose: Boolean = true): Boolean {
         //Verbose - tryb gadatliwy - toast na ekranie dobre dla informowania, ale niedobre dla
         //sprawdzania w tle
 
-        if (view?.findViewById<TextInputLayout>(R.id.outlinedTextFieldUnameLogin)?.editText?.text.toString()
+        if (view?.findViewById<TextInputLayout>(R.id.outlinedTextFieldMailLogin)?.editText?.text.toString()
                 .isNotEmpty()){
             return false
         } else {
             if(verbose){
-                Toast.makeText(context, "Pole login puste", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Pole mail puste", Toast.LENGTH_LONG).show()
             }
             return true
         }
@@ -124,26 +174,6 @@ class LoginScreenFragment : Fragment() {
             return true
         }
 
-    }
-    private fun checkDB(uname: String, pswd: String, verbose: Boolean = true): Boolean{
-        val znaleziono: Int = aph.findUserByUsernameAndPassword(requireActivity(),uname, pswd)
-        Log.d(TAG, "checkDBint: $znaleziono")
-
-        when (znaleziono) {
-            0,1 -> {
-                if(verbose) {
-                    Toast.makeText(context, "Błędny login lub hasło", Toast.LENGTH_LONG).show()
-                }
-                return false
-            }
-            2 -> {
-                if(verbose) {
-                    Toast.makeText(context, "Dane poprawne", Toast.LENGTH_LONG).show()
-                }
-                return true
-            }
-        }
-        return false
     }
 
 }
