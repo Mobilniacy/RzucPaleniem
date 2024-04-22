@@ -16,17 +16,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import apacheFileHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.FirebaseApp
 import com.mobilniacy.rzucpaleniem.MainActivity
 import com.mobilniacy.rzucpaleniem.R
 import com.mobilniacy.rzucpaleniem.databinding.FragmentRegisterScreenBinding
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 
 class RegisterScreenFragment : Fragment() {
@@ -221,6 +221,19 @@ class RegisterScreenFragment : Fragment() {
         val month = Calendar.getInstance().get(Calendar.MONTH) + 1 // Miesiące są indeksowane od 1
         val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
 
+        val sevenDays: Int = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+        var dayName: String = "null"
+
+        when (sevenDays) {
+            Calendar.SUNDAY -> {dayName = "ND"}
+            Calendar.MONDAY -> {dayName = "PN"}
+            Calendar.TUESDAY -> {dayName = "WT"}
+            Calendar.WEDNESDAY -> {dayName = "ŚR"}
+            Calendar.THURSDAY -> {dayName = "CZ"}
+            Calendar.FRIDAY -> {dayName = "PT"}
+            Calendar.SATURDAY -> {dayName = "SO"}
+        }
+
         // Dane do zapisu
         val productData1 = hashMapOf(
             "MARLBORO GOLD" to hashMapOf(
@@ -253,6 +266,7 @@ class RegisterScreenFragment : Fragment() {
 
         // Dodanie daty do kolekcji "stats"
         val statsData = hashMapOf(
+            "name" to dayName,
             "smoked" to 0
         )
 

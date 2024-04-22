@@ -19,6 +19,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
+    <View
+        android:id="@+id/viewUserBottom"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="-6dp"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="6dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/viewUserTop"
+        app:layout_constraintStart_toStartOf="@+id/viewUserTop"
+        app:layout_constraintTop_toTopOf="@+id/viewUserTop" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="800px"
+        android:layout_height="200px"
+        android:src="@drawable/round_rect"
+        app:layout_constraintBottom_toBottomOf="@+id/viewCounterTop"
+        app:layout_constraintEnd_toEndOf="@+id/viewCounterTop"
+        app:layout_constraintStart_toStartOf="@+id/viewCounterTop"
+        app:layout_constraintTop_toTopOf="@+id/viewCounterTop" />
+
+    <View
+        android:id="@+id/viewUserTop"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="64dp"
+        android:background="#F6F6F6"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/viewCounterTop"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
+        android:background="#F6F6F6"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewExpandBottom" />
+
     <TextView
         android:id="@+id/text_title_screen"
         android:layout_width="match_parent"
@@ -30,23 +77,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonxd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="256dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonxd"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewRandomMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -67,7 +104,8 @@
             android:onClick="expandList"
             android:padding="16dp"
             android:text="Witaj! Rozwiń listę, aby wybrać produkt"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
         <ListView
             android:id="@+id/productsListView"
@@ -77,34 +115,17 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/plus_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:background="@color/black"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="+"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewExpandBottom" />
-
 
     <EditText
         android:id="@+id/licznik"
         android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@color/white"
+        android:layout_height="48dp"
+        android:background="#F6F6F6"
         android:clickable="false"
         android:cursorVisible="false"
         android:ems="10"
         android:focusable="false"
-        android:gravity="end"
+        android:gravity="center|end"
         android:inputType="text"
         android:scrollHorizontally="true"
         android:singleLine="true"
@@ -112,9 +133,9 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/plus_button"
-        app:layout_constraintStart_toEndOf="@+id/plus_button"
-        app:layout_constraintTop_toTopOf="@+id/plus_button" />
+        app:layout_constraintBottom_toBottomOf="@+id/viewCounterTop"
+        app:layout_constraintEnd_toEndOf="@+id/viewCounterTop"
+        app:layout_constraintTop_toTopOf="@+id/viewCounterTop" />
 
     <TextView
         android:id="@+id/textViewRandomMessage"
@@ -126,6 +147,69 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jesteś zalogowany jako"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewUserTop"
+        app:layout_constraintEnd_toEndOf="@+id/viewUserTop"
+        app:layout_constraintStart_toStartOf="@+id/viewUserTop"
+        app:layout_constraintTop_toTopOf="@+id/viewUserTop" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wypaliłeś dzisiaj"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewCounterTop"
+        app:layout_constraintEnd_toEndOf="@+id/viewCounterTop"
+        app:layout_constraintStart_toStartOf="@+id/viewCounterTop"
+        app:layout_constraintTop_toTopOf="@+id/viewCounterTop" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="Wyloguj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_marginStart="48dp"
+        android:src="@drawable/mobilniacyappicon2"
+        app:layout_constraintBottom_toTopOf="@+id/viewUserTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/plus_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/round_rect_black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/viewCounterTop"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/plus_button"
+        app:layout_constraintEnd_toEndOf="@+id/plus_button"
+        app:layout_constraintStart_toStartOf="@+id/viewCounterTop"
+        app:layout_constraintTop_toTopOf="@+id/plus_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

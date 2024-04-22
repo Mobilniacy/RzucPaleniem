@@ -87,4 +87,20 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/backgroundStatsTop" />
 
+
+    <RelativeLayout
+        android:id="@+id/layoutWykresu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="128dp"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundStatsTop"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundStatsTop"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/backgroundStatsTop"
+        app:layout_constraintTop_toBottomOf="@+id/lista_rozwijana"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

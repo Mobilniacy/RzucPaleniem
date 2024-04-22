@@ -2,7 +2,6 @@ package com.mobilniacy.rzucpaleniem.ui.title_screen
 
 import Product
 import ProductListAdapter
-import android.content.ContentValues
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -11,19 +10,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobilniacy.rzucpaleniem.MainActivity
 import com.mobilniacy.rzucpaleniem.R
 import com.mobilniacy.rzucpaleniem.databinding.FragmentTitleScreenBinding
-import java.text.SimpleDateFormat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Calendar
-import java.util.Locale
 
 
 class TitleScreenFragment : Fragment() {
@@ -39,7 +41,7 @@ class TitleScreenFragment : Fragment() {
     private lateinit var productsListView: ListView
     private lateinit var productAdapter: ProductListAdapter
 
-    private lateinit var plus_button: Button
+    private lateinit var plus_button: ImageButton
     private lateinit var counter: TextView
     private var count = 0
     private lateinit var oneMinuteText: TextView
@@ -76,6 +78,7 @@ class TitleScreenFragment : Fragment() {
 
 
 
+
         oneMinuteText= binding.textViewRandomMessage
         var tekstDoWyswietlenia = "Czy wiedziałeś że... \n" + textList.random()
         oneMinuteText.text = tekstDoWyswietlenia
@@ -105,11 +108,34 @@ class TitleScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myButton = requireView().findViewById(R.id.buttonxd)
+//        myButton = requireView().findViewById(R.id.buttonxd)
+//        myButton.setOnClickListener {
+//            if (zmienionyProdukt == true){
+//                updateLicznik()
+//                Toast.makeText(context, "Button clicked!", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        }
+
+        updateUserName()
+
+
+        val myButton: Button = (activity as MainActivity).findViewById(R.id.buttonLogout)
+
+        // Dodaj listener do przycisku
         myButton.setOnClickListener {
-            if (zmienionyProdukt == true){
-                updateLicznik()
-                Toast.makeText(context, "Button clicked!", Toast.LENGTH_SHORT).show()
+            CoroutineScope(Dispatchers.Main).launch {
+
+                try {
+                    // Wylogowanie użytkownika
+                    (activity as MainActivity).auth.signOut()
+                } catch (e: Exception) {
+                    //nie wylogowany
+                }
+                // Wprowadzenie opóźnienia na 3 sekundy
+                delay(2000)
+                requireActivity().findNavController(R.id.nav_host_fragment_activity_main)
+                    .navigate(R.id.action_logout)
             }
 
         }
@@ -120,6 +146,7 @@ class TitleScreenFragment : Fragment() {
 
         // Set initial count
         counter.text = "0"
+
 
         // Set OnClickListener for the plusButton
         plus_button.setOnClickListener {
@@ -141,11 +168,20 @@ class TitleScreenFragment : Fragment() {
                 productsListView.visibility = View.GONE
                 counter.visibility = View.VISIBLE
                 plus_button.visibility = View.VISIBLE
+                binding.textView6.visibility = View.VISIBLE
+                binding.imageView4.visibility = View.VISIBLE
+//                binding.viewCounterBottom.visibility = View.VISIBLE
+                binding.viewCounterTop.visibility = View.VISIBLE
                 expandTextView.text = "Rozwiń aby wybrać produkt"
             } else {
                 productsListView.visibility = View.VISIBLE
                 counter.visibility = View.GONE
                 plus_button.visibility = View.GONE
+                binding.textView6.visibility = View.GONE
+                binding.imageView4.visibility = View.GONE
+//                binding.viewCounterBottom.visibility = View.GONE
+                binding.viewCounterTop.visibility = View.GONE
+
                 expandTextView.text = "Wybierz produkt"
             }
         }
@@ -160,7 +196,38 @@ class TitleScreenFragment : Fragment() {
                 productsListView.visibility = View.GONE
                 counter.visibility = View.VISIBLE
                 plus_button.visibility = View.VISIBLE
+                binding.textView6.visibility = View.VISIBLE
+                binding.imageView4.visibility = View.VISIBLE
+//                binding.viewCounterBottom.visibility = View.VISIBLE
+                binding.viewCounterTop.visibility = View.VISIBLE
                 plus_button.isClickable = true
+            }
+    }
+
+    private fun updateUserName() {
+        val currentUserUID = (activity as MainActivity).auth.currentUser?.uid
+        var nowyText = "Jesteś zalogowany jako: "
+        binding.textView2.text = nowyText
+        (activity as MainActivity).db.collection("users").document(currentUserUID.toString())
+            .get().addOnSuccessListener { document ->
+            if (document != null) {
+                if (document.exists()) {
+                    // Jeśli dokument istnieje, pobierz zmienną
+                    val data = document.data
+                    val zmienna = data?.get("login").toString()
+                    Log.d("TAG", "Zmienna: $zmienna")
+                    nowyText += zmienna
+                    binding.textView2.text = nowyText
+
+                } else {
+                    Log.d("TAG", "Dokument nie istnieje")
+                }
+            } else {
+                Log.d("TAG", "Błąd pobierania dokumentu")
+            }
+        }
+            .addOnFailureListener { exception ->
+                Log.d("TAG", "Błąd pobierania dokumentu: $exception")
             }
     }
 
@@ -201,6 +268,41 @@ class TitleScreenFragment : Fragment() {
 
                     } else {
                         Log.d("TAG", "Dokument nie istnieje")
+                        val sevenDays: Int = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+                        var dayName: String = "null"
+
+                        when (sevenDays) {
+                            Calendar.SUNDAY -> {dayName = "ND"}
+                            Calendar.MONDAY -> {dayName = "PN"}
+                            Calendar.TUESDAY -> {dayName = "WT"}
+                            Calendar.WEDNESDAY -> {dayName = "ŚR"}
+                            Calendar.THURSDAY -> {dayName = "CZ"}
+                            Calendar.FRIDAY -> {dayName = "PT"}
+                            Calendar.SATURDAY -> {dayName = "SO"}
+                        }
+                        val dane = hashMapOf(
+                            "name" to dayName,
+
+                            "smoked" to counter.text.toString().toInt(),
+                        )
+                        (activity as MainActivity).db.collection("users")
+                            .document(currentUserUID.toString())
+                            .collection("products")
+                            .document(selectedProduct.toString())
+                            .collection("stats")
+                            .document(year.toString())
+                            .collection(month.toString())
+                            .document(day.toString())
+                            .set(dane)
+                            .addOnSuccessListener {
+                                Log.d("Firestore", "Document successfully written!")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w("Firestore", "Error writing document", e)
+                            }
+
+
+                        counter.text = "0"
                     }
                 } else {
                     Log.d("TAG", "Błąd pobierania dokumentu")
@@ -236,15 +338,29 @@ class TitleScreenFragment : Fragment() {
         val year = Calendar.getInstance().get(Calendar.YEAR)
         val month = Calendar.getInstance().get(Calendar.MONTH) + 1 // Miesiące są indeksowane od 1
         val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        val sevenDays: Int = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+        var dayName: String = "null"
 
-        Toast.makeText(
-            context,
-            "Updatuje firestore",
-            Toast.LENGTH_SHORT,
-        ).show()
+        when (sevenDays) {
+            Calendar.SUNDAY -> {dayName = "ND"}
+            Calendar.MONDAY -> {dayName = "PN"}
+            Calendar.TUESDAY -> {dayName = "WT"}
+            Calendar.WEDNESDAY -> {dayName = "ŚR"}
+            Calendar.THURSDAY -> {dayName = "CZ"}
+            Calendar.FRIDAY -> {dayName = "PT"}
+            Calendar.SATURDAY -> {dayName = "SO"}
+        }
+
+//        Toast.makeText(
+//            context,
+//            "Updatuje firestore",
+//            Toast.LENGTH_SHORT,
+//        ).show()
 
 
         val dane = hashMapOf(
+            "name" to dayName,
+
             "smoked" to counter.text.toString().toInt(),
         )
 
